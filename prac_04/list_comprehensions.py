@@ -47,3 +47,4 @@ print(number_only)
 # the result should be: 'Harlem, Hendrix, Lovelace'
 character_full_name=[name.split()[1] for name in full_names if len(name)>11]
 print(character_full_name)
+
