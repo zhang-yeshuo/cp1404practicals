@@ -15,11 +15,11 @@ def main():
 def load_guitars(filename):
     guitars = []
     with open(filename, "r") as file:
-        reader = csv.reader(file)
-        for line in reader:
-            name, year, cost = line
+        for line in file:
+            name, year, cost = line.strip().split(',')
             guitars.append(Guitar(name, int(year), float(cost)))
     return guitars
+
 
 
 def display_guitars(guitars):
@@ -38,10 +38,9 @@ def add_guitars(guitars):
 
 
 def write_guitars(filename, guitars):
-    with open(filename, "w",newline="") as file:
-        writer = csv.writer(file)
+    with open(filename, "w") as file:
         for guitar in guitars:
-            writer.writerow([guitar.name, guitar.year, guitar.cost])
+            file.write(f"{guitar.name},{guitar.year},{guitar.cost}\n")
 
 
 if __name__ == "__main__":
